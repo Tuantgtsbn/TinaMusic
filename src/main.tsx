@@ -1,10 +1,10 @@
 import "@fontsource/roboto";
-import {createTheme, ThemeProvider} from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import store from "@redux/store.ts";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {StrictMode} from "react";
-import {createRoot} from "react-dom/client";
-import {Provider} from "react-redux";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import App from "./App.tsx";
 import "./i18n";
 import "./styles/main.scss";

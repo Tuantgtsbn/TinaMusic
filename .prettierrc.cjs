@@ -1,8 +1,5 @@
 module.exports = {
-  quoteProps: 'consistent',
+  quoteProps: "consistent",
   bracketSpacing: true,
-  endOfLine: 'auto',
-  singleQuote: true,
-  tabWidth: 4,
-  width: 100,
+  endOfLine: "auto",
 };

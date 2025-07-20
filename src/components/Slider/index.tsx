@@ -1,10 +1,11 @@
-import {ReactNode, useMemo} from "react";
-import {useWindowWidth} from "src/utils/hooks";
+import { ReactNode, useMemo } from "react";
+import useWindowWidth from "@hooks/useWindowWidth";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import {Navigation, Virtual} from "swiper/modules";
-import {Swiper} from "swiper/react";
+import { Navigation, Virtual } from "swiper/modules";
+import { Swiper } from "swiper/react";
+import "./index.scss";
 
 interface ISliderProps {
   children: ReactNode;
@@ -47,17 +48,18 @@ export default function Slider({
       modules={[Virtual, Navigation]}
       slidesPerView={computedSlidesPerView}
       breakpoints={{
-        1284: {spaceBetween: 14},
-        1024: {spaceBetween: 12},
-        768: {spaceBetween: 8},
-        624: {spaceBetween: 6},
-        568: {spaceBetween: 4},
-        0: {spaceBetween: 2},
+        1284: { spaceBetween: 14 },
+        1024: { spaceBetween: 12 },
+        768: { spaceBetween: 8 },
+        624: { spaceBetween: 6 },
+        568: { spaceBetween: 4 },
+        0: { spaceBetween: 2 },
       }}
       spaceBetween={spaceBetween}
       navigation={true}
       virtual
       {...props}
+      className="custom-swiper-container"
     >
       {children}
     </Swiper>

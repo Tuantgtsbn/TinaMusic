@@ -1,0 +1,30 @@
+.custom-swiper-container {
+  .swiper-button-next,
+  .swiper-button-prev {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #000;
+  }
+  .swiper-button-next {
+    right: 10px;
+    &::after {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #ffffff50;
+    }
+  }
+  .swiper-button-prev {
+    left: 10px;
+    &::after {
+      font-size: 24px;
+      font-weight: bold;
+      background-color: #ffffff50;
+    }
+  }
+  .swiper-button-disabled {
+    opacity: 0;
+    pointer-events: none;
+  }
+}

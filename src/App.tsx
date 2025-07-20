@@ -1,11 +1,11 @@
-import {BrowserRouter, Outlet, Route, Routes} from 'react-router-dom';
-import {ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import './styles/global.scss';
-import './styles/style.scss';
-import HomeLayout from '@/layout/User/HomeLayout';
-import NotFound from '@pages/NotFound';
-import UserHomePage from '@pages/User/Home';
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./styles/global.scss";
+import "./styles/style.scss";
+import HomeLayout from "@/layout/User/HomeLayout";
+import NotFound from "@pages/NotFound";
+import UserHomePage from "@pages/User/Home";
 
 function App() {
   return (

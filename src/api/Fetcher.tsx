@@ -1,8 +1,8 @@
-import {loginUser, logoutUser} from "@redux/slices/UserSlice";
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from "axios";
-import {toast} from "react-toastify";
+import { loginUser, logoutUser } from "@redux/slices/UserSlice";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
 import Config from "../config";
-import store, {persistor} from "../redux/store";
+import store, { persistor } from "../redux/store";
 import ListErrorMessage from "./ErrorMessage/ListErrorMessage";
 
 export interface IDataError {
@@ -76,7 +76,7 @@ function handleLogout(content: string, isRequiredLogOut: boolean): void {
 }
 
 function displayError(dataError: IDataError): void {
-  const {errorCode} = dataError;
+  const { errorCode } = dataError;
   let errorMessage;
 
   const error = ListErrorMessage.find((dt) => dt.error_code === errorCode);
@@ -95,9 +95,9 @@ function handleRefreshToken() {
       {
         url: "/auth/refresh-token",
         method: "post",
-        data: {refreshToken: store.getState().user?.refreshToken},
+        data: { refreshToken: store.getState().user?.refreshToken },
       },
-      {displayError: false},
+      { displayError: false },
     )
       .then((res) => {
         store.dispatch(loginUser(res));
@@ -146,7 +146,7 @@ function createApiClient(config: AxiosRequestConfig, options: IFetcherOptions) {
     timeout: Config.NETWORK_CONFIG.TIMEOUT,
   });
 
-  return {apiClient, defaultOptions};
+  return { apiClient, defaultOptions };
 }
 
 function returnResponseData<T>(
@@ -286,7 +286,7 @@ export async function fetcher<T>(
   config: AxiosRequestConfig,
   options: IFetcherOptions = {},
 ): Promise<T> {
-  const {apiClient, defaultOptions} = createApiClient(config, options);
+  const { apiClient, defaultOptions } = createApiClient(config, options);
 
   return new Promise<T>((resolve, reject) => {
     apiClient
@@ -326,7 +326,7 @@ export async function fetcherWithMetadata<T>(
   config: AxiosRequestConfig,
   options: IFetcherOptions = {},
 ): Promise<IDataWithMeta<T>> {
-  const {apiClient, defaultOptions} = createApiClient(config, options);
+  const { apiClient, defaultOptions } = createApiClient(config, options);
 
   return new Promise<IDataWithMeta<T>>((resolve, reject) => {
     apiClient

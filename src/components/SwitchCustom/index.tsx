@@ -1,8 +1,8 @@
-import {alpha, styled, Switch, SwitchProps} from "@mui/material";
+import { alpha, styled, Switch, SwitchProps } from "@mui/material";
 
 const GlobalSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-))(({theme}) => ({
+))(({ theme }) => ({
   "transitionDuration": "300ms",
   "& .MuiSwitch-switchBase": {
     "color": "#CECECE",

@@ -1,7 +1,7 @@
-import GlobalSettingSlice from '@redux/GlobalSettingSlice';
-import {configureStore} from '@reduxjs/toolkit';
-import {combineReducers} from 'redux';
-import ModalReducer from './ModalSlice';
+import GlobalSettingSlice from "@redux/GlobalSettingSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import ModalReducer from "./ModalSlice";
 import {
   FLUSH,
   PAUSE,
@@ -11,9 +11,9 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
-} from 'redux-persist';
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-import Config from '../config';
+} from "redux-persist";
+import createWebStorage from "redux-persist/lib/storage/createWebStorage";
+import Config from "../config";
 
 const createNoopStorage = (): {
   getItem: (_key: string) => Promise<null>;
@@ -34,19 +34,19 @@ const createNoopStorage = (): {
 };
 
 const storage =
-  typeof window !== 'undefined'
-    ? createWebStorage('local')
+  typeof window !== "undefined"
+    ? createWebStorage("local")
     : createNoopStorage();
 
 const persistConfig = {
   key: Config.STORE_NAME,
   version: 1,
   storage: storage,
-  blacklist: ['modal', 'player'],
+  blacklist: ["modal", "player"],
 };
 
 const settingsPersistConfig = {
-  key: 'settings',
+  key: "settings",
   storage: storage,
   blacklist: [],
 };

@@ -1,4 +1,4 @@
-import {Skeleton} from "@mui/material";
+import { Skeleton } from "@mui/material";
 
 export default function SubTitleSkeleton(): JSX.Element {
   return (
