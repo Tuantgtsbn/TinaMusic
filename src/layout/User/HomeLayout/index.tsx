@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../components/SideBar";
 import Content from "../../components/Content";
 import NavBar from "../components/NavBar";
 import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "@redux/store";
-import SettingModal from "@components/ModalSettingGeneral";
+import SettingModal from "../components/ModalSettingGeneral";
 import { closeModalSetting, closeModalLogin } from "@redux/ModalSlice";
 import useWindowWidth from "@hooks/useWindowWidth";
-import LoginModal from "@components/ModalLogin";
+import LoginModal from "../components/ModalLogin";
 import { Drawer } from "@mui/material";
 import clsx from "clsx";
+import BottomPlayer from "../components/BottomPlayer";
+import MobileDownloadSnackBar from "../components/SnackBarDownload";
 const HomeLayout = ({
   children,
   ...props
@@ -19,6 +21,7 @@ const HomeLayout = ({
   const { isOpenModalLogin, isOpenModalSetting } = useSelector(
     (state: IRootState) => state.modal,
   );
+  const { currentSong } = useSelector((state: IRootState) => state.player);
   const [openSideBar, setOpenSideBar] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -67,6 +70,8 @@ const HomeLayout = ({
         open={isOpenModalLogin}
         onClose={() => dispatch(closeModalLogin())}
       />
+      {currentSong && <BottomPlayer />}
+      <MobileDownloadSnackBar />
     </div>
   );
 };

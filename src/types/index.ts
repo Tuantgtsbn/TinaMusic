@@ -14,6 +14,12 @@ export enum EArtistType {
   SINGER_MUSICIAN = 2,
 }
 
+export enum PlayMode {
+  NORMAL = 0,
+  REPEAT = 2,
+  REPEAT_ONE = 3,
+}
+
 export enum GenderEnum {
   MALE = 0,
   FEMALE = 1,

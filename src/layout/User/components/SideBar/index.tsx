@@ -1,17 +1,21 @@
 import ICHome from "@components/Icon/ICHome";
 import ICLibraryMusic from "@components/Icon/ICLibraryMusic";
 import ICRank from "@components/Icon/ICRank";
+import ICSetting from "@components/Icon/ICSetting";
 import ICTopic from "@components/Icon/ICTopic";
 import Config from "@config";
 import {
+  Button,
   Collapse,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import { openModalLogin, openModalSetting } from "@redux/ModalSlice";
 import clsx from "clsx";
 import { useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 const SideBar = ({
   className,
@@ -22,6 +26,7 @@ const SideBar = ({
   isDrawer?: boolean;
   closeDrawer?: () => void;
 }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleClick = () => {
@@ -123,7 +128,11 @@ const SideBar = ({
       </div>
       <hr className="border-t border-t-[#FFFFFF12]" />
       <div className="pt-3 py-8">
-        <List component="ul" aria-labelledby="nested-list-subheader">
+        <List
+          component="ul"
+          aria-labelledby="nested-list-subheader"
+          sx={{ paddingTop: "0px", paddingBottom: "0px" }}
+        >
           <div className="relative">
             <ListItemButton
               onClick={handleClick}
@@ -165,6 +174,52 @@ const SideBar = ({
             </List>
           </Collapse>
         </List>
+        {isDrawer && (
+          <>
+            <List
+              component="ul"
+              sx={{ paddingTop: "0px", paddingBottom: "0px" }}
+            >
+              <div className={clsx("relative nav-item")}>
+                <ListItemButton
+                  className={clsx("!py-3 !pr-[20px] !pl-2 !ml-3")}
+                  onClick={() => dispatch(openModalSetting())}
+                >
+                  <ListItemIcon className="!min-w-fit">
+                    <ICSetting color="#FFFFFF" />
+                  </ListItemIcon>
+                  <ListItemText className="ml-4" primary="Settings" />
+                </ListItemButton>
+              </div>
+            </List>
+            <div className="mt-3.5">
+              <div
+                style={{
+                  background:
+                    "linear-gradient(128.48deg,rgb(255, 140, 25) 8.36%,rgb(255,69,1) 87.81%)",
+                }}
+                className="w-[200px]  p-[20px] flex flex-col items-center rounded-lg gap-2 mx-auto"
+              >
+                <p className="font-bold">Listen to music for free</p>
+                <p className="text-center text-[11px]">
+                  Log in to discover playlists made just for you
+                </p>
+                <Button
+                  variant="contained"
+                  sx={{
+                    color: "#ff4319",
+                    width: "150px",
+                    backgroundColor: "#fff",
+                    borderRadius: "40px",
+                  }}
+                  onClick={() => dispatch(openModalLogin())}
+                >
+                  LOGIN
+                </Button>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

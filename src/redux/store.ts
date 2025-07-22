@@ -2,6 +2,7 @@ import GlobalSettingSlice from "@redux/GlobalSettingSlice";
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import ModalReducer from "./ModalSlice";
+import PlayerReducer from "./PlayerSlice";
 import {
   FLUSH,
   PAUSE,
@@ -50,10 +51,16 @@ const settingsPersistConfig = {
   storage: storage,
   blacklist: [],
 };
+const playerPersistConfig = {
+  key: "player",
+  storage: storage,
+  blacklist: ["isPlaying", "currentTime"],
+};
 
 const rootReducers = combineReducers({
   settings: persistReducer(settingsPersistConfig, GlobalSettingSlice.reducer),
   modal: ModalReducer,
+  player: persistReducer(playerPersistConfig, PlayerReducer),
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

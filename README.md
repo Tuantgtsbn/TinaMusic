@@ -6,9 +6,9 @@
 
 ## Biến môi trường (env)
 
--   Biến bắt buộc phải có tiền tố: `VITE`. Ví dụ: VITE_API_BASE_URL
--   Khi thêm biến môi trường mới, cần phải thêm vào file `.env.example` và thêm kiểu của biến vào file `src/vite-env.d.ts`
--   Để truy cập biến môi trường, sử dụng `import.meta.env`
+- Biến bắt buộc phải có tiền tố: `VITE`. Ví dụ: VITE_API_BASE_URL
+- Khi thêm biến môi trường mới, cần phải thêm vào file `.env.example` và thêm kiểu của biến vào file `src/vite-env.d.ts`
+- Để truy cập biến môi trường, sử dụng `import.meta.env`
 
 ## Ảnh giao diện demo
 
