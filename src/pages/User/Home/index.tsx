@@ -6,7 +6,7 @@ import FavoriteArtist from "./components/YoutubeTrending/FavoriteArtist";
 
 const UserHomePage = () => {
   return (
-    <div className="pt-[20px] px-8">
+    <div className="pt-[20px] px-8 pb-[96px] mb-[56px]">
       <MusicRecommend />
       <Top100 />
       <TopGenres />

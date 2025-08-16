@@ -32,6 +32,11 @@ export enum PlaylistType {
   TOP_100 = 2,
 }
 
+export enum ERole {
+  USER = 0,
+  ADMIN = 1,
+}
+
 export interface IAudio {
   id?: string;
   type?: AudioQualityTypeEnum;
@@ -145,4 +150,28 @@ export interface IThemeAndGenre {
   nameLo?: string;
   nameEn?: string;
   playlists?: IPlaylist[];
+}
+
+export interface IUserInfo {
+  id: string;
+  email: string;
+  fullname: string;
+  language: string;
+  username: string;
+  phone?: string;
+  identificationNumber?: string;
+  avatar?: string;
+  status?: string;
+  gender: string;
+  birthday?: string;
+  country?: string;
+  lastLoggedIn?: string;
+  device?: string;
+  report?: string;
+  violent?: boolean;
+  role?: ERole;
+  artistId?: string;
+  type?: string;
+  createdAt: string;
+  updatedAt?: string;
 }

@@ -1,4 +1,4 @@
-import { loginUser, logoutUser } from "@redux/slices/UserSlice";
+import { loginUser, logoutUser } from "@redux/UserSlice";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import Config from "../config";

@@ -3,6 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import ModalReducer from "./ModalSlice";
 import PlayerReducer from "./PlayerSlice";
+import UserReducer from "./UserSlice";
 import {
   FLUSH,
   PAUSE,
@@ -61,6 +62,7 @@ const rootReducers = combineReducers({
   settings: persistReducer(settingsPersistConfig, GlobalSettingSlice.reducer),
   modal: ModalReducer,
   player: persistReducer(playerPersistConfig, PlayerReducer),
+  user: UserReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

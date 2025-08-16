@@ -1,55 +1,58 @@
 import { IArtist, IPlaylist, ISong, IThemeAndGenre } from "@types/index.ts";
 import {
-  dbArtists,
-  dbMusicTrendingYtb,
-  dbRecommend,
-  dbTop100,
   dbTopPlaylist,
 } from "src/services/db";
+import { fetcher } from "./Fetcher";
 
-async function getSongsRecommended(): Promise<ISong[]> {
-  await new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-  return dbRecommend;
+function getSongsRecommended(): Promise<ISong[]> {
+  return fetcher<ISong[]>({
+    url: "/songs/recommended",
+    params: {
+      page: 0,
+      pageSize: 10
+    }
+  })
 }
 
-async function getTop100(): Promise<IPlaylist[]> {
-  await new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-  return dbTop100;
+function getTop100(): Promise<IPlaylist[]> {
+  return fetcher<IPlaylist[]>({
+    url: "/playlists/top100",
+    params: {
+      page: 0,
+      pageSize: 10
+    }
+  })
 }
 
-async function getMusicTrendingYtb(): Promise<ISong[]> {
-  await new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-  return dbMusicTrendingYtb;
+function getMusicTrendingYtb(): Promise<ISong[]> {
+  return fetcher<ISong[]>({
+    url: "/songs/music-trending-ytb",
+    params: {
+      page: 0,
+      pageSize: 10
+    }
+  })
 }
 
 async function getTopArtistFavourite(): Promise<Partial<IArtist>[]> {
-  await new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
-  });
-  return dbArtists;
+  return fetcher<IArtist[]>({
+    url: "/artists/top-favourite",
+    params: {
+      page: 0,
+      pageSize: 10
+    }
+  })
 }
 
 async function getTopGenre(): Promise<IThemeAndGenre[]> {
-  await new Promise<void>((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 1000);
+  return fetcher<IThemeAndGenre[]>({
+    url: "/genres/top-genres-playlists",
+    params: {
+      page: 0,
+      pageSize: 3,
+      playlistType: 0
+    }
   });
-  return dbTopPlaylist;
 }
 
 const ApiHome = {

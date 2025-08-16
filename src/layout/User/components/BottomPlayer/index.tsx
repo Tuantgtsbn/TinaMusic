@@ -5,8 +5,9 @@ import MusicControl from "./MusicControl";
 import ProgressBar from "./ProgressBar";
 import ActionBar from "./ActionBar";
 import MusicPlayer from "src/core/MusicPlayer";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { ISong } from "@types/index";
+import createMusicGradient from "@utils/Color";
 
 function BottomPlayer() {
   const { currentSong, currentTime, volume, isMuted, isPlaying } = useSelector(
@@ -31,9 +32,11 @@ function BottomPlayer() {
   if (!currentSong) return null;
   return (
     <div
-      className="fixed bottom-0 right-0 left-0 bg-slate-500 px-8 py-4 h-[96px] z-10 flex justify-between items-center gap-5"
+      className="fixed bottom-0 right-0 left-0 px-8 py-4 h-[96px] z-10 flex justify-between items-center gap-5"
       style={{
-        background: `linear-gradient(to top, rgb(36, 36, 36) 0%, rgb(48, 47, 48) 50%, rgb(62, 62, 62) 100%)`,
+        background:
+          createMusicGradient(currentSong.keyColor) ||
+          "linear-gradient(to top, rgb(36, 36, 36) 0%, rgb(48, 47, 48) 50%, rgb(62, 62, 62) 100%)",
       }}
     >
       <SongInfo data={currentSong} />
